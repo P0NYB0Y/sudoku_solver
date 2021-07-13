@@ -32,12 +32,14 @@ def fill_squares(table_in):
         for j in i:
             if len(j.pos): #if there is only one item in list
                 j.set_val(j.pos[0])
+    return
 
 def hor_comp(table_in):
     for i in table_in:
         for j in i:
             if not len(j.pos):
                 j.pos = [x for x in j.pos if x not in i]
+    return
 
 
 def manual_fill_table(table_in):    # Allows user to fill out table manually
@@ -62,6 +64,7 @@ def manual_fill_table(table_in):    # Allows user to fill out table manually
                 input_valid = False
             else:
                 correct = True
+    return
                 
 
 def print_table(table_in):  # Could remove ? cases with use of get value function in square class
@@ -87,20 +90,21 @@ def print_table(table_in):  # Could remove ? cases with use of get value functio
             for k in range(33):
                 print ("-",end="")
         print("\n")
+    return
 
 # manual_fill_table()
 # print_table()
 
-# test1 = square (0)
-# test1.pos = [8,9]
-# test2 = square (9)
-# test3 = square (0)
-# test3.pos = [1,8,9]
-# test_table = [[test1,test2,test3]]
-# print_table(test_table)
-# hor_comp(test_table)
-# fill_squares(test_table)
-# print_table(test_table)
+test1 = square (0)
+test1.pos = [8,9]
+test2 = square (9)
+test3 = square (0)
+test3.pos = [1,8,9]
+test_table = [[test1,test2,test3]]
+print_table(test_table)
+hor_comp(test_table)
+fill_squares(test_table)
+print_table(test_table)
 
 # lst_1 = [1,2]
 # lst_2 = [2,5,6]
