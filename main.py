@@ -14,7 +14,7 @@ class square:
         if self.value == 0:
             return "?"
         else:
-            return str(self.value)   # TODO: Add fitering to display "?" instead of 0
+            return str(self.value)
 
     def set_val (self, val_in): #Used to set value while solving
         self.pos = []
@@ -30,15 +30,29 @@ table = [[],[],[],[],[],[],[],[],[]]    #TODO: implement class for board
 def fill_squares(table_in):
     for i in table_in:
         for j in i:
-            if len(j.pos): #if there is only one item in list
+            if len(j.pos) == 1: #if there is only one item in list
                 j.set_val(j.pos[0])
     return
 
 def hor_comp(table_in):
     for i in table_in:
+        temp_table = []
         for j in i:
             if not len(j.pos):
-                j.pos = [x for x in j.pos if x not in i]
+                temp_table.append(j.value)
+        for j in i:
+            j.pos = [x for x in j.pos if x not in temp_table]
+    return
+
+def vert_comp(table_in):
+    for x in range(1):
+        temp_table = []
+        for i in table_in:
+            if not len(i[x].pos):
+                temp_table.append(i[x].value)
+        for i in table_in:
+            if len(i[x].pos) > 1:
+                i[x].pos = [x for x in i[x].pos if x not in temp_table]
     return
 
 
@@ -95,16 +109,34 @@ def print_table(table_in):  # Could remove ? cases with use of get value functio
 # manual_fill_table()
 # print_table()
 
+# test1 = square (0)
+# test1.pos = [8,9]
+# test2 = square (9)
+# test_table = [[test1,test2]]
+
+# hor_comp(test_table)
+# print (test1.pos)
+
 test1 = square (0)
-test1.pos = [8,9]
-test2 = square (9)
-test3 = square (0)
-test3.pos = [1,8,9]
-test_table = [[test1,test2,test3]]
-print_table(test_table)
-hor_comp(test_table)
+test1.pos = [2,9]
+test2 = square (2)
+test3 = square (3)
+test4 = square (0)
+test4.pos = [2,8]
+test5 = square (5)
+# test6 = square (6)
+# test7 = square (7)
+# test8 = square (8)
+# test9 = square (9)
+test_table = [[test1],[test2],[test3],[test4],[test5]]
+
+# print_table(test_table)
+vert_comp(test_table)
 fill_squares(test_table)
-print_table(test_table)
+print (test1)
+print (test4)
+# fill_squares(test_table)
+# print_table(test_table)
 
 # lst_1 = [1,2]
 # lst_2 = [2,5,6]
