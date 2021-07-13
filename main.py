@@ -55,6 +55,22 @@ def vert_comp(table_in):
                 i[x].pos = [x for x in i[x].pos if x not in temp_table]
     return
 
+def square_check(table_in):
+    hor_index, vert_index = [0,3,6]
+    for h_start in hor_index:
+        square_lst = []
+        for v_start in vert_index:
+            for x in range(3):
+                for y in range (3):
+                    if (table_in[h_start + x][v_start + y].value != 0):
+                        square_lst.append(table_in[h_start + x][v_start + y].value)
+        for v_start in vert_index:
+            for x in range(3):
+                for y in range (3):
+                    #add removal part here
+                    return #just added to stop error message
+    return
+
 
 def manual_fill_table(table_in):    # Allows user to fill out table manually
     print ("Fill the table by row moving from left to right; use zero for squares which are not filled in.")
