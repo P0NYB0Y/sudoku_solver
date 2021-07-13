@@ -27,14 +27,18 @@ table = [[],[],[],[],[],[],[],[],[]]    #TODO: implement class for board
 #     for j in range(9):
 #         i.append(square(0)) 
 
-def fill_squares():
-    for i in table:
+def fill_squares(table_in):
+    for i in table_in:
         for j in i:
             if len(j.pos): #if there is only one item in list
                 j.set_val(j.pos[0])
 
+def hor_comp(table_in):
+    for i in table_in:
+        for j in i:
+            j.pos = [x for x in j.pos if x not in i]
 
-def manual_fill_table():    # Allows user to fill out table manually
+def manual_fill_table(table_in):    # Allows user to fill out table manually
     print ("Fill the table by row moving from left to right; use zero for squares which are not filled in.")
     for x in range(9):
         correct, input_valid = False, False
@@ -42,25 +46,25 @@ def manual_fill_table():    # Allows user to fill out table manually
             print ("Filling row", x + 1)
             for y in range(9):  # TODO: Add input verification and maybe have user input "?" instead of zero
                 usr_val_in = input("Input number: ")
-                table[x].append(square(usr_val_in))
+                table_in[x].append(square(usr_val_in))
             while input_valid == False:
-                print ("Is", table[x], "correct? (y/n)")
+                print ("Is", table_in[x], "correct? (y/n)")
                 usr_in = input()
                 if usr_in.upper() == "Y" or usr_in.upper() == "N":
                     input_valid = True
                 else:
                     print ("Invalid Input, Try Again.")
             if usr_in.upper() == "N":
-                table[x].clear()
+                table_in[x].clear()
                 print ("Fill Row Again.")
                 input_valid = False
             else:
                 correct = True
                 
 
-def print_table():  # Could remove ? cases with use of get value function in square class
+def print_table(table_in):  # Could remove ? cases with use of get value function in square class
     horiz = 0
-    for i in table:
+    for i in table_in:
         vert = 0
         for j in i:
             vert += 1
@@ -84,3 +88,19 @@ def print_table():  # Could remove ? cases with use of get value function in squ
 
 # manual_fill_table()
 # print_table()
+
+# test1 = square (0)
+# test1.pos = [8,9]
+# test2 = square (9)
+# test3 = square (0)
+# test3.pos = [1,8,9]
+# test_table = [[test1,test2,test3]]
+# print_table(test_table)
+# hor_comp(test_table)
+# fill_squares(test_table)
+# print_table(test_table)
+
+# lst_1 = [1,2]
+# lst_2 = [2,5,6]
+# lst_1 = [x for x in lst_1 if x not in lst_2]
+# print (lst_1)
