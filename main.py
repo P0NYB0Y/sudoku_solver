@@ -36,7 +36,9 @@ def fill_squares(table_in):
 def hor_comp(table_in):
     for i in table_in:
         for j in i:
-            j.pos = [x for x in j.pos if x not in i]
+            if not len(j.pos):
+                j.pos = [x for x in j.pos if x not in i]
+
 
 def manual_fill_table(table_in):    # Allows user to fill out table manually
     print ("Fill the table by row moving from left to right; use zero for squares which are not filled in.")
