@@ -106,7 +106,7 @@ class board:
         return self.fill_squares()
 
     def square_check(self):
-        hor_index, vert_index = [0,3,6]
+        hor_index, vert_index = [0,3,6], [0,3,6] #TODO: find better syntax
         for h_start in hor_index:
             square_lst = []
             for v_start in vert_index:
@@ -117,11 +117,21 @@ class board:
             for v_start in vert_index:
                 for x in range(3):
                     for y in range (3):
-                        #add removal part here
-                        return #just added to stop error message
+                        self.table[h_start + x][v_start + y].pos = [x for x in self.table[h_start + x][v_start + y].pos if x not in square_lst]
         return  self.fill_squares()
 
-#TODO: Add checking by if number is already in row/square
+    # def num_inst_chk(self): # Checks by number
+    #     for x in range(1,10):
+    #         for i in self.table: # Horizontal check
+                
+    #             # num_of_instance = 0
+    #             # for j in i:
+    #             #     if j.value == x:
+    #             #         return #Add break or something here
+    #             #     if x in j.pos:
+    #             #         num_of_instance += 1
+    #             return self.fill_squares()
+
 
 test_e = square ()
 test1 = square (1)
@@ -153,20 +163,24 @@ for i in test_val_list:
         temp_lst_in.append(i)
     v_test_table.append(temp_lst_in)
 
-s_test_board = board(s_test_table)
-s_test_board.print_table()
-s_test_board.square_check()
-s_test_board.fill_squares()
-s_test_board.print_table()
+# s_test_board = board(s_test_table)
+# s_test_board.print_table()
+# s_test_board.square_check()
+# s_test_board.print_table()
 
-h_test_board = board(h_test_table)
-h_test_board.print_table()
-h_test_board.hor_comp()
-h_test_board.fill_squares()
-h_test_board.print_table()
+# h_test_board = board(h_test_table)
+# h_test_board.print_table()
+# h_test_board.hor_comp()
+# h_test_board.print_table()
 
 # v_test_board =  board(v_test_table)
 # v_test_board.print_table()
 # v_test_board.vert_comp()
 # v_test_board.fill_squares()
 # v_test_board.print_table()
+
+full_test_board = board()
+full_test_board.manual_fill_table()
+
+while (full_test_board.hor_comp() or full_test_board.vert_comp() or full_test_board.square_check() or full_test_board.hor_comp() or full_test_board.vert_comp() or full_test_board.square_check()):
+    full_test_board.print_table()
