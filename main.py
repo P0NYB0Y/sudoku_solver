@@ -22,35 +22,8 @@ class board:
             self.table = [[],[],[],[],[],[],[],[],[]]
         else:
             self.table = table_in
-    
-    def fill_squares(self):
-        for i in self.table:
-            for j in i:
-                if len(j.pos) == 1: #if there is only one item in list
-                    j.set_val(j.pos[0])
-        return
 
-    def hor_comp(self):
-        for i in self.table:
-            temp_table = []
-            for j in i:
-                if not len(j.pos):
-                    temp_table.append(j.value)
-            for j in i:
-                j.pos = [x for x in j.pos if x not in temp_table]   # TODO: test check else if continue makes faster
-        return
-    
-    def vert_comp(self):    # Is there a cleaner way?
-        for x in range(1):
-            temp_table = []
-            for i in self.table:
-                if not len(i[x].pos):
-                    temp_table.append(i[x].value)
-            for i in self.table:
-                if len(i[x].pos) > 1:
-                    i[x].pos = [x for x in i[x].pos if x not in temp_table]
-        return
-
+    # User input/output functions
     def manual_fill_table(self):    # Allows user to fill out table manually
         print ("Fill the table by row moving from left to right; use zero for squares which are not filled in.")
         for x in range(9):
@@ -98,7 +71,39 @@ class board:
                 for k in range(33):
                     print ("-",end="")
             print("\n")
+        print ("\n")
         return
+    
+    # Sudoku solving functions (return true/false to make sure that)
+    def fill_squares(self):
+        change = False
+        for i in self.table:
+            for j in i:
+                if len(j.pos) == 1: #if there is only one item in list
+                    j.set_val(j.pos[0])
+                    change = True
+        return change
+
+    def hor_comp(self):
+        for i in self.table:
+            temp_table = []
+            for j in i:
+                if not len(j.pos):
+                    temp_table.append(j.value)
+            for j in i:
+                j.pos = [x for x in j.pos if x not in temp_table]   # TODO: test check else if continue makes faster
+        return self.fill_squares()
+    
+    def vert_comp(self):    # Is there a cleaner way?
+        for x in range(1):
+            temp_table = []
+            for i in self.table:
+                if not len(i[x].pos):
+                    temp_table.append(i[x].value)
+            for i in self.table:
+                if len(i[x].pos) > 1:
+                    i[x].pos = [x for x in i[x].pos if x not in temp_table]
+        return self.fill_squares()
 
     def square_check(self):
         hor_index, vert_index = [0,3,6]
@@ -114,26 +119,54 @@ class board:
                     for y in range (3):
                         #add removal part here
                         return #just added to stop error message
-        return
+        return  self.fill_squares()
 
 #TODO: Add checking by if number is already in row/square
 
-
-test1 = square (0)
-test1.pos = [2,9]
+test_e = square ()
+test1 = square (1)
 test2 = square (2)
 test3 = square (3)
-test4 = square (0)
-test4.pos = [2,8]
+test4 = square (4)
 test5 = square (5)
-# test6 = square (6)
-# test7 = square (7)
-# test8 = square (8)
-# test9 = square (9)
-test_table = [[test1],[test2],[test3],[test4],[test5]]
+test6 = square (6)
+test7 = square (7)
+test8 = square (8)
+test9 = square (9)
 
-test_board = board(test_table)
-print (test_board.table[0][0])
-test_board.vert_comp()
-test_board.fill_squares()
-test_board.print_table()
+test_val_list = [test1,test2,test3,test4,test5,test6,test7,test8,test_e]
+
+s_test_table = []
+for x in range(3):
+    s_test_table.append([test1,test2,test3,test1,test2,test3,test1,test2,test3])
+    s_test_table.append([test4,test5,test6,test4,test5,test6,test4,test5,test6])
+    s_test_table.append([test7,test8,test_e,test7,test8,test_e,test7,test8,test_e])
+
+h_test_table = []
+for x in range(9):
+    h_test_table.append([test1,test2,test3,test4,test5,test6,test7,test8,test_e])
+
+v_test_table = []
+for i in test_val_list:
+    temp_lst_in= []
+    for j in range(9):
+        temp_lst_in.append(i)
+    v_test_table.append(temp_lst_in)
+
+s_test_board = board(s_test_table)
+s_test_board.print_table()
+s_test_board.square_check()
+s_test_board.fill_squares()
+s_test_board.print_table()
+
+h_test_board = board(h_test_table)
+h_test_board.print_table()
+h_test_board.hor_comp()
+h_test_board.fill_squares()
+h_test_board.print_table()
+
+# v_test_board =  board(v_test_table)
+# v_test_board.print_table()
+# v_test_board.vert_comp()
+# v_test_board.fill_squares()
+# v_test_board.print_table()
