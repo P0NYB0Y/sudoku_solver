@@ -16,6 +16,87 @@ class square:
         self.pos = []
         self.value = val_in
 
+class board:
+    def __init__(self, table_in = None):
+        if (table_in == None):
+            self.table = [[],[],[],[],[],[],[],[],[]]
+    
+    def fill_squares(self):
+        for i in self.table:
+            for j in i:
+                if len(j.pos) == 1: #if there is only one item in list
+                    j.set_val(j.pos[0])
+        return
+
+    def hor_comp(self):
+        for i in self.table:
+            temp_table = []
+            for j in i:
+                if not len(j.pos):
+                    temp_table.append(j.value)
+            for j in i:
+                j.pos = [x for x in j.pos if x not in temp_table]   # TODO: test check else if continue makes faster
+        return
+    
+    def vert_comp(self):    # Is there a cleaner way?
+        for x in range(1):
+            temp_table = []
+            for i in self.table:
+                if not len(i[x].pos):
+                    temp_table.append(i[x].value)
+            for i in self.table:
+                if len(i[x].pos) > 1:
+                    i[x].pos = [x for x in i[x].pos if x not in temp_table]
+        return
+
+    def manual_fill_table(self):    # Allows user to fill out table manually
+        print ("Fill the table by row moving from left to right; use zero for squares which are not filled in.")
+        for x in range(9):
+            correct, input_valid = False, False
+            while correct == False:
+                print ("Filling row", x + 1)
+                for y in range(9):  # TODO: Add input verification and maybe have user input "?" instead of zero
+                    usr_val_in = input("Input number: ")
+                    self.table[x].append(square(usr_val_in))
+                while input_valid == False:
+                    print ("Is", self.table[x], "correct? (y/n)")
+                    usr_in = input()
+                    if usr_in.upper() == "Y" or usr_in.upper() == "N":
+                        input_valid = True
+                    else:
+                        print ("Invalid Input, Try Again.")
+                if usr_in.upper() == "N":
+                    self.table[x].clear()
+                    print ("Fill Row Again.")
+                    input_valid = False
+                else:
+                    correct = True
+        return
+
+    def print_table(table_in):  # Could remove ? cases with use of get value function in square class
+        horiz = 0
+        for i in table_in:
+            vert = 0
+            for j in i:
+                vert += 1
+                if (vert % 3 == 0 and vert < 9):
+                    if j.value == False:
+                        print ("?","", end="")
+                    else:
+                        print (j.value,"", end="")
+                    print ("|",end=" ")
+                else:
+                    if j.value == False:    # If value is 0 (unknown) then display as "?"
+                        print ("?","  ", end="")
+                    else:
+                        print (j.value,"  ", end="")
+            horiz += 1
+            if (horiz % 3 == 0 and horiz < 9):
+                print ("\n")
+                for k in range(33):
+                    print ("-",end="")
+            print("\n")
+        return
 
 table = [[],[],[],[],[],[],[],[],[]]    #TODO: implement class for board
 
