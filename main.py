@@ -116,22 +116,6 @@ class board:
                         return #just added to stop error message
         return
 
-def square_check(table_in):
-    hor_index, vert_index = [0,3,6]
-    for h_start in hor_index:
-        square_lst = []
-        for v_start in vert_index:
-            for x in range(3):
-                for y in range (3):
-                    if (table_in[h_start + x][v_start + y].value != 0):
-                        square_lst.append(table_in[h_start + x][v_start + y].value)
-        for v_start in vert_index:
-            for x in range(3):
-                for y in range (3):
-                    #add removal part here
-                    return #just added to stop error message
-    return
-
 #TODO: Add checking by if number is already in row/square
 
 
