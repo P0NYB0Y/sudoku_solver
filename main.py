@@ -1,9 +1,5 @@
 class square:
-    def __init__(self):
-        self.pos = list(range(1,10))
-        self.value = 0   # Using zero instead of none so value and complete boolean can be same
-
-    def __init__(self, val_in):
+    def __init__(self, val_in = False):
         if val_in == False:
             self.pos = list(range(1,10))
         else:    
@@ -134,6 +130,7 @@ def print_table(table_in):  # Could remove ? cases with use of get value functio
 # hor_comp(test_table)
 # print (test1.pos)
 
+
 test1 = square (0)
 test1.pos = [2,9]
 test2 = square (2)
@@ -147,7 +144,11 @@ test5 = square (5)
 # test9 = square (9)
 test_table = [[test1],[test2],[test3],[test4],[test5]]
 
+
+
 # print_table(test_table)
+print (test1)
+print (test4)
 vert_comp(test_table)
 fill_squares(test_table)
 print (test1)
