@@ -92,13 +92,12 @@ class board:
     def square_check(self): #Issue here
         hor_index, vert_index = [0,3,6], [0,3,6] #TODO: find better syntax
         for h_start in hor_index:
-            square_lst = []
             for v_start in vert_index:
+                square_lst = []
                 for x in range(3):
                     for y in range (3):
                         if (self.table[h_start + x][v_start + y].value != 0):
                             square_lst.append(self.table[h_start + x][v_start + y].value)
-            for v_start in vert_index:
                 for x in range(3):
                     for y in range (3):
                         self.table[h_start + x][v_start + y].pos = [x for x in self.table[h_start + x][v_start + y].pos if x not in square_lst]
