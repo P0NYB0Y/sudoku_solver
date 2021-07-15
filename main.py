@@ -90,12 +90,12 @@ class board:
             for j in i:
                 if not len(j.pos):
                     temp_table.append(j.value)
-            for j in i:
-                j.pos = [x for x in j.pos if x not in temp_table]   # TODO: test check else if continue makes faster
+            for k in i:
+                k.pos = [x for x in k.pos if x not in temp_table]   # TODO: test check else if continue makes faster
         return self.fill_squares()
     
     def vert_comp(self):    # Is there a cleaner way?
-        for x in range(1):
+        for x in range(9):
             temp_table = []
             for i in self.table:
                 if not len(i[x].pos):
@@ -105,7 +105,7 @@ class board:
                     i[x].pos = [x for x in i[x].pos if x not in temp_table]
         return self.fill_squares()
 
-    def square_check(self):
+    def square_check(self): #Issue here
         hor_index, vert_index = [0,3,6], [0,3,6] #TODO: find better syntax
         for h_start in hor_index:
             square_lst = []
@@ -133,28 +133,17 @@ class board:
     #             return self.fill_squares()
 
 
-test_e = square ()
-test1 = square (1)
-test2 = square (2)
-test3 = square (3)
-test4 = square (4)
-test5 = square (5)
-test6 = square (6)
-test7 = square (7)
-test8 = square (8)
-test9 = square (9)
-
-test_val_list = [test1,test2,test3,test4,test5,test6,test7,test8,test_e]
+test_val_list = [square(1),square(2),square(3),square(4),square(5),square(6),square(7),square(8),square()]
 
 s_test_table = []
 for x in range(3):
-    s_test_table.append([test1,test2,test3,test1,test2,test3,test1,test2,test3])
-    s_test_table.append([test4,test5,test6,test4,test5,test6,test4,test5,test6])
-    s_test_table.append([test7,test8,test_e,test7,test8,test_e,test7,test8,test_e])
+    s_test_table.append([square(1),square(2),square(3),square(1),square(2),square(3),square(1),square(2),square(3)])
+    s_test_table.append([square(4),square(5),square(6),square(4),square(5),square(6),square(4),square(5),square(6)])
+    s_test_table.append([square(7),square(8),square(),square(7),square(8),square(),square(7),square(8),square()])
 
 h_test_table = []
 for x in range(9):
-    h_test_table.append([test1,test2,test3,test4,test5,test6,test7,test8,test_e])
+    h_test_table.append([square(1),square(2),square(3),square(4),square(5),square(6),square(7),square(8),square()])
 
 v_test_table = []
 for i in test_val_list:
@@ -179,8 +168,26 @@ for i in test_val_list:
 # v_test_board.fill_squares()
 # v_test_board.print_table()
 
-full_test_board = board()
-full_test_board.manual_fill_table()
+full_test_table = ([square(),square(5),square(),square(1),square(7),square(9),square(3),square(8),square()],
+[square(),square(),square(),square(),square(),square(4),square(),square(1),square()],
+[square(),square(1),square(9),square(),square(),square(),square(7),square(2),square()],
+[square(),square(),square(),square(),square(),square(8),square(2),square(),square()],
+[square(2),square(6),square(),square(),square(4),square(),square(),square(),square(5)],
+[square(8),square(3),square(),square(2),square(9),square(),square(),square(),square(7)],
+[square(),square(4),square(3),square(),square(6),square(),square(),square(7),square(8)],
+[square(6),square(),square(),square(8),square(),square(5),square(),square(4),square(3)],
+[square(1),square(9),square(),square(4),square(3),square(),square(),square(),square(2)])
 
-while (full_test_board.hor_comp() or full_test_board.vert_comp() or full_test_board.square_check() or full_test_board.hor_comp() or full_test_board.vert_comp() or full_test_board.square_check()):
-    full_test_board.print_table()
+# full_test_table = [[square(),square(5),square(),square(1),square(7),square(9),square(3),square(8),square()]]
+
+full_test_board = board(full_test_table)
+# full_test_board = board()
+# full_test_board.manual_fill_table()
+# full_test_board.print_table()
+full_test_board.hor_comp()
+# full_test_board.print_table()
+full_test_board.vert_comp()
+print ("Vert")
+full_test_board.print_table()
+full_test_board.square_check()
+full_test_board.print_table()
