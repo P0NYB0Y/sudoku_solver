@@ -103,14 +103,23 @@ class board:
                         self.table[h_start + x][v_start + y].pos = [x for x in self.table[h_start + x][v_start + y].pos if x not in square_lst]
         return  self.fill_squares()
 
-    # def num_inst_chk(self): # Checks by number
-    #     for x in range(1,10):
-    #         for i in self.table: # Horizontal check
-                
-    #             # num_of_instance = 0
-    #             # for j in i:
-    #             #     if j.value == x:
-    #             #         return #Add break or something here
-    #             #     if x in j.pos:
-    #             #         num_of_instance += 1
-    #             return self.fill_squares()
+    def num_inst_chk(self): # Checks by number
+        for x in range(1,10):
+            for i in self.table: # Horizontal check
+                num_of_instance = 0 # Maybe replace with bool
+                index = -1
+                input_index = None # Index of value to input
+                for j in i:
+                    index += 1
+                    if j.value == x:
+                        num_of_instance = 2
+                        break
+                    elif x in j.pos:
+                        num_of_instance += 1
+                        input_index = index
+                        if num_of_instance > 1:
+                            break
+                if num_of_instance == 1:
+                    i[input_index].set_val(x)
+            # Vertical check
+        return self.fill_squares()
