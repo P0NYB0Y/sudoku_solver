@@ -89,8 +89,8 @@ class board:
                     i[x].pos = [x for x in i[x].pos if x not in temp_table]
         return self.fill_squares()
 
-    def square_check(self): #Issue here
-        hor_index, vert_index = [0,3,6], [0,3,6] #TODO: find better syntax
+    def square_check(self):
+        hor_index = vert_index = [0,3,6] #TODO: find better syntax
         for h_start in hor_index:
             for v_start in vert_index:
                 square_lst = []
