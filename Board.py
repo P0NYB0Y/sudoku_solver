@@ -11,7 +11,7 @@ class board:
     def manual_fill_table(self):    # Allows user to fill out table manually
         print ("Fill the table by row moving from left to right; use zero for squares which are not filled in.")
         for x in range(9):
-            correct, input_valid = False, False
+            correct = input_valid = False
             while correct == False:
                 print ("Filling row", x + 1)
                 for y in range(9):  # TODO: Add input verification and maybe have user input "?" instead of zero
@@ -58,7 +58,7 @@ class board:
         print ("\n")
         return
     
-    # Sudoku solving functions (return true/false to make sure that)
+    # Sudoku solving functions (return true/false if they make change)
     def fill_squares(self):
         change = False
         for i in self.table:
@@ -90,7 +90,7 @@ class board:
         return self.fill_squares()
 
     def square_check(self):
-        hor_index = vert_index = [0,3,6] #TODO: find better syntax
+        hor_index = vert_index = [0,3,6]
         for h_start in hor_index:
             for v_start in vert_index:
                 square_lst = []
