@@ -104,7 +104,7 @@ class board:
         return  self.fill_squares()
 
     def num_inst_chk(self): # Checks by number
-        for x in range(1,10):
+        for x in range(1,10):   # TODO: replace x and y values
             for i in self.table: # Horizontal check
                 num_of_instance = 0 # Maybe replace with bool
                 index = -1
@@ -121,5 +121,23 @@ class board:
                             break
                 if num_of_instance == 1:
                     i[input_index].set_val(x)
-            # Vertical check
+
+            for y in range(9): # Vertical check
+                num_of_instance = 0
+                index = -1
+                input_index = None
+                for i in self.table:
+                    index += 1
+                    if i[y].value == x:
+                        num_of_instance = 2
+                        break
+                    elif x in i[y].pos:
+                        num_of_instance += 1
+                        input_index = index
+                        if num_of_instance > 1:
+                            break
+                if num_of_instance == 1:
+                    self.table[input_index][y].set_val(x)
+
+            # Box check
         return self.fill_squares()

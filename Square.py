@@ -13,5 +13,7 @@ class square:
             return str(self.value)
 
     def set_val (self, val_in): #Used to set value while solving
+        if self.value != False:
+            print("oh no") # TODO: Replace with actual error
         self.pos = []
         self.value = val_in

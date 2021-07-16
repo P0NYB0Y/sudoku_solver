@@ -22,7 +22,7 @@ full_test_table = ([square(),square(),square(),square(),square(),square(6),squar
 [square(8),square(7),square(),square(),square(5),square(3),square(9),square(),square()])
 
 full_test_board = board(full_test_table)
-for x in range(100):
+for z in range (100):
     full_test_board.hor_comp()
     full_test_board.vert_comp()
     full_test_board.square_check()
