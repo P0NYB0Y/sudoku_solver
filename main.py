@@ -1,25 +1,25 @@
 from Board import board
 from Square import square
 
-# full_test_table = ([square(),square(5),square(),square(1),square(7),square(9),square(3),square(8),square()],
-# [square(),square(),square(),square(),square(),square(4),square(),square(1),square()],
-# [square(),square(1),square(9),square(),square(),square(),square(7),square(2),square()],
-# [square(),square(),square(),square(),square(),square(8),square(2),square(),square()],
-# [square(2),square(6),square(),square(),square(4),square(),square(),square(),square(5)],
-# [square(8),square(3),square(),square(2),square(9),square(),square(),square(),square(7)],
-# [square(),square(4),square(3),square(),square(6),square(),square(),square(7),square(8)],
-# [square(6),square(),square(),square(8),square(),square(5),square(),square(4),square(3)],
-# [square(1),square(9),square(),square(4),square(3),square(),square(),square(),square(2)])
+# full_test_table = ([square(),square(),square(),square(),square(),square(),square(),square(),square()],
+# [square(),square(),square(),square(),square(),square(),square(),square(),square()],
+# [square(),square(),square(),square(),square(),square(),square(),square(),square()],
+# [square(),square(),square(),square(),square(),square(),square(),square(),square()],
+# [square(),square(),square(),square(),square(),square(),square(),square(),square()],
+# [square(),square(),square(),square(),square(),square(),square(),square(),square()],
+# [square(),square(),square(),square(),square(),square(),square(),square(),square()],
+# [square(),square(),square(),square(),square(),square(),square(),square(),square()],
+# [square(),square(),square(),square(),square(),square(),square(),square(),square()])
 
-full_test_table = ([square(),square(),square(),square(),square(),square(6),square(),square(),square()],
-[square(),square(),square(),square(1),square(),square(9),square(5),square(),square()],
-[square(6),square(8),square(),square(),square(),square(),square(),square(9),square()],
-[square(),square(),square(2),square(7),square(),square(),square(),square(8),square()],
-[square(),square(9),square(),square(),square(),square(),square(),square(),square(4)],
-[square(),square(),square(4),square(),square(8),square(5),square(),square(),square()],
-[square(),square(),square(),square(),square(),square(),square(4),square(),square(3)],
-[square(),square(),square(),square(),square(6),square(),square(),square(),square()],
-[square(8),square(7),square(),square(),square(5),square(3),square(9),square(),square()])
+full_test_table = ([square(),square(2),square(1),square(),square(),square(4),square(8),square(3),square()],
+[square(4),square(),square(3),square(5),square(),square(8),square(2),square(),square(1)],
+[square(),square(6),square(),square(1),square(3),square(),square(),square(),square()],
+[square(),square(9),square(2),square(),square(7),square(),square(5),square(4),square()],
+[square(1),square(),square(5),square(3),square(),square(),square(),square(),square()],
+[square(),square(),square(7),square(),square(),square(),square(),square(),square(8)],
+[square(),square(5),square(),square(),square(2),square(),square(3),square(),square()],
+[square(2),square(3),square(),square(),square(),square(),square(),square(8),square(6)],
+[square(7),square(1),square(),square(6),square(8),square(3),square(4),square(5),square()])
 
 full_test_board = board(full_test_table)
 for z in range (100):
