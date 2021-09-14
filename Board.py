@@ -161,7 +161,7 @@ class board:
         return self.fill_squares()
 
     def obv_matches(self): # In progress
-        for i in self.table:
+        for i in self.table: # Horizontal Scan
             nav_lst = list(range(1,10))
             while (nav_lst):
                 first_lst = i[nav_lst[0]].pos
@@ -170,5 +170,7 @@ class board:
                     continue
                 for x in nav_lst:
                     if (i[x].pos == first_lst):
-                        # Add removal bit for other lists
+                        for j in i:
+                            if j.pos != first_lst:
+                                j.pos = [g for g in j.pos if g not in first_lst]
                         nav_lst.remove(x)
