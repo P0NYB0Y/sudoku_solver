@@ -165,12 +165,12 @@ class board:
             nav_lst = list(range(1,10))
             while (nav_lst):
                 first_lst = i[nav_lst[0]].pos
-                nav_lst.pop()
+                nav_lst.pop(0)
                 if (nav_lst == False):
                     continue
                 for x in nav_lst:
                     if (i[x].pos == first_lst):
-                        for j in i:
-                            if j.pos != first_lst:
-                                j.pos = [g for g in j.pos if g not in first_lst]
+                        for j in range(9):
+                            if i[j].pos != first_lst:
+                                i[j].pos = [g for g in i[j].pos if g not in first_lst]
                         nav_lst.remove(x)
