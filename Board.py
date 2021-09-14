@@ -103,24 +103,24 @@ class board:
                         self.table[h_start + x][v_start + y].pos = [x for x in self.table[h_start + x][v_start + y].pos if x not in square_lst]
         return  self.fill_squares()
 
-    def num_inst_chk(self): # Checks by number
-        for x in range(1,10):   # TODO: replace x and y values
+    def num_inst_chk(self): # Checks by number (in progress)
+        for num_check in range(1,10):   # TODO: replace x and y values
             for i in self.table: # Horizontal check
                 num_of_instance = 0 # Maybe replace with bool
                 index = -1
                 input_index = None # Index of value to input
                 for j in i:
                     index += 1
-                    if j.value == x:
+                    if j.value == num_check:
                         num_of_instance = 2
                         break
-                    elif x in j.pos:
+                    elif num_check in j.pos:
                         num_of_instance += 1
                         input_index = index
                         if num_of_instance > 1:
                             break
                 if num_of_instance == 1:
-                    i[input_index].set_val(x)
+                    i[input_index].set_val(num_check)
 
             for y in range(9): # Vertical check
                 num_of_instance = 0
@@ -128,33 +128,34 @@ class board:
                 input_index = None
                 for i in self.table:
                     index += 1
-                    if i[y].value == x:
+                    if i[y].value == num_check:
                         num_of_instance = 2
                         break
-                    elif x in i[y].pos:
+                    elif num_check in i[y].pos:
                         num_of_instance += 1
                         input_index = index
                         if num_of_instance > 1:
                             break
                 if num_of_instance == 1:
-                    self.table[input_index][y].set_val(x)
-
-            # Put break conditions in front of setting index and instance
-
-            # Box check (In progress)
+                    self.table[input_index][y].set_val(num_check)
+            
             hor_index = vert_index = [0,3,6]
             for h_start in hor_index:
                 for v_start in vert_index:
-                    for h in range(3):
-                        num_of_instance = 0
+                    num_of_instance = 0
+                    input_h = -1
+                    input_v = -1
+                    for x in range(3):
                         for y in range (3):
-                            if (x in self.table[h_start+h][v_start+y].pos):
+                            if (self.table[h_start + x][v_start + y].value == num_check):
+                                num_of_instance = 2
+                            if (num_check in self.table[h_start + x][v_start + y].pos):
                                 num_of_instance += 1
-                                h_fill_index = h_start + h
-                                v_fill_index = v_start + y
                                 if num_of_instance > 1:
                                     break
-                        if num_of_instance == 1: # Redundant?
-                            self.table[h_fill_index][v_fill_index].pos = [x]
-                            
+                                else:
+                                    input_h = h_start + x
+                                    input_v = v_start + y
+                    if num_of_instance == 1: 
+                        self.table[input_h][input_v].set_val(num_check)
         return self.fill_squares()
