@@ -174,3 +174,4 @@ class board:
                             if i[j].pos != first_lst:
                                 i[j].pos = [g for g in i[j].pos if g not in first_lst]
                         nav_lst.remove(x)
+        return self.fill_squares()
