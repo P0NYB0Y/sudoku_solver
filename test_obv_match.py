@@ -12,5 +12,4 @@ while (nav_lst):
                 if tester[j] != first_lst:
                     tester[j] = [g for g in tester[j] if g not in first_lst]
             nav_lst.remove(x)
-    
 print(tester)
