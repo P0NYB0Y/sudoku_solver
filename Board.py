@@ -139,5 +139,22 @@ class board:
                 if num_of_instance == 1:
                     self.table[input_index][y].set_val(x)
 
-            # Box check
+            # Put break conditions in front of setting index and instance
+
+            # Box check (In progress)
+            hor_index = vert_index = [0,3,6]
+            for h_start in hor_index:
+                for v_start in vert_index:
+                    for h in range(3):
+                        num_of_instance = 0
+                        for y in range (3):
+                            if (x in self.table[h_start+h][v_start+y].pos):
+                                num_of_instance += 1
+                                h_fill_index = h_start + h
+                                v_fill_index = v_start + y
+                                if num_of_instance > 1:
+                                    break
+                        if num_of_instance == 1: # Redundant?
+                            self.table[h_fill_index][v_fill_index].pos = [x]
+                            
         return self.fill_squares()
