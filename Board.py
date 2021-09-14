@@ -139,7 +139,7 @@ class board:
                 if num_of_instance == 1:
                     self.table[input_index][y].set_val(num_check)
             
-            hor_index = vert_index = [0,3,6]
+            hor_index = vert_index = [0,3,6] #Box Check
             for h_start in hor_index:
                 for v_start in vert_index:
                     num_of_instance = 0
@@ -159,3 +159,16 @@ class board:
                     if num_of_instance == 1: 
                         self.table[input_h][input_v].set_val(num_check)
         return self.fill_squares()
+
+    def obv_matches(self): # In progress
+        for i in self.table:
+            nav_lst = list(range(1,10))
+            while (nav_lst):
+                first_lst = i[nav_lst[0]].pos
+                nav_lst.pop()
+                if (nav_lst == False):
+                    continue
+                for x in nav_lst:
+                    if (i[x].pos == first_lst):
+                        # Add removal bit for other lists
+                        nav_lst.remove(x)
