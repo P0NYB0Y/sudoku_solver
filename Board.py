@@ -160,7 +160,7 @@ class board:
                         self.table[input_h][input_v].set_val(num_check)
         return self.fill_squares()
 
-    def naked_matches(self): # In progress
+    def naked_matches(self): # In progress https://www.thonky.com/sudoku/naked-pairs-triples-quads
         for i in self.table: # Horizontal Scan
             nav_lst = list(range(1,10))
             while (nav_lst):
@@ -175,3 +175,5 @@ class board:
                                 i[j].pos = [g for g in i[j].pos if g not in first_lst]
                         nav_lst.remove(x)
         return self.fill_squares()
+
+    # TODO: add hidden matches function https://www.thonky.com/sudoku/hidden-pairs-triples-quads
