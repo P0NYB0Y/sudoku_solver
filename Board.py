@@ -165,8 +165,12 @@ class board:
         for i in self.table: # Horizontal Scan
             nav_lst = list(range(9))
             while (nav_lst):
-                first_lst = i[nav_lst[0]].pos
-                nav_lst.pop(0)
+                if not i[nav_lst[0]].pos:
+                    nav_lst.pop(0)
+                    continue
+                else:
+                    first_lst = i[nav_lst[0]].pos
+                    nav_lst.pop(0)
                 if (nav_lst == False):
                     continue
                 for x in nav_lst:
