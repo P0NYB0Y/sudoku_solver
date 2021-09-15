@@ -28,4 +28,5 @@ for z in range (100):
     full_test_board.vert_comp()
     full_test_board.square_check()
     full_test_board.num_inst_chk()
+    full_test_board.naked_matches()
 full_test_board.print_table()

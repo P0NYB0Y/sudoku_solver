@@ -161,8 +161,9 @@ class board:
         return self.fill_squares()
 
     def naked_matches(self): # In progress https://www.thonky.com/sudoku/naked-pairs-triples-quads
+        # TODO: Find issue
         for i in self.table: # Horizontal Scan
-            nav_lst = list(range(1,10))
+            nav_lst = list(range(9))
             while (nav_lst):
                 first_lst = i[nav_lst[0]].pos
                 nav_lst.pop(0)
