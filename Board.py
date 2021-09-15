@@ -160,7 +160,7 @@ class board:
                         self.table[input_h][input_v].set_val(num_check)
         return self.fill_squares()
 
-    def obv_matches(self): # In progress
+    def naked_matches(self): # In progress
         for i in self.table: # Horizontal Scan
             nav_lst = list(range(1,10))
             while (nav_lst):
