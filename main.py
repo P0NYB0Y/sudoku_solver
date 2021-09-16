@@ -23,10 +23,14 @@ full_test_table = (
 [square(5),square(),square(),square(),square(),square(),square(),square(2),square(7)])
 
 full_test_board = board(full_test_table)
-for z in range (100):
+for z in range (5):
     full_test_board.hor_comp()
     full_test_board.vert_comp()
     full_test_board.square_check()
     full_test_board.num_inst_chk()
+    print("Num_Instance")
+    full_test_board.print_table()
     full_test_board.naked_matches()
-full_test_board.print_table()
+    print()
+    print("Obv Pairs")
+    full_test_board.print_table()

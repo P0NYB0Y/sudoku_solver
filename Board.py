@@ -162,6 +162,7 @@ class board:
 
     def naked_matches(self): # In progress https://www.thonky.com/sudoku/naked-pairs-triples-quads
         # TODO: Find issue
+        # Not overwriting cells
         for i in self.table: # Horizontal Scan
             nav_lst = list(range(9))
             while (nav_lst):
@@ -176,6 +177,8 @@ class board:
                 for x in nav_lst:
                     if (i[x].pos == first_lst):
                         for j in range(9):
+                            if not i[j].pos:
+                                continue
                             if i[j].pos != first_lst:
                                 i[j].pos = [g for g in i[j].pos if g not in first_lst]
                         nav_lst.remove(x)
