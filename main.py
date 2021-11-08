@@ -1,5 +1,6 @@
 from Board import board
 from Square import square
+from Display import board_UI
 
 # full_test_table = ([square(),square(),square(),square(),square(),square(),square(),square(),square()],
 # [square(),square(),square(),square(),square(),square(),square(),square(),square()],
