@@ -27,7 +27,7 @@ class board_UI(Frame):
         # clear_button.pack(fill=BOTH, side=BOTTOM)
 
         self.__draw_grid()
-        self.__draw_puzzle()
+        # self.__draw_puzzle()
         self.parent.mainloop()
 
         # self.canvas.bind("<Button-1>", self.__cell_clicked)
