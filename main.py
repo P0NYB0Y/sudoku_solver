@@ -27,6 +27,8 @@ full_test_table = (
 full_test_board = board(full_test_table)
 root = Tk()
 board_UI(root,full_test_board)
+
+
 # for z in range (5):
 #     full_test_board.hor_comp()
 #     full_test_board.vert_comp()

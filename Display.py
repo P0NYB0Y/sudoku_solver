@@ -7,8 +7,11 @@ WIDTH = HEIGHT = MARGIN * 2 + SIDE * 9  # Width and height of the whole board
 class board_UI(Frame):
     def __init__(self, parent, board):
         self.board = board
+        Frame.__init__(self, parent)
         self.parent = parent
-        self.row = self.col = 0
+
+        self.row, self.col = -1, -1
+
         self.__initUI()
 
     def __initUI(self):
@@ -18,16 +21,17 @@ class board_UI(Frame):
                              width=WIDTH,
                              height=HEIGHT)
         self.canvas.pack(fill=BOTH, side=TOP)
-        clear_button = Button(self,
-                              text="Clear answers",
-                              command=self.__clear_answers)
-        clear_button.pack(fill=BOTH, side=BOTTOM)
+        # clear_button = Button(self,
+        #                       text="Clear answers")
+        #                     #   command=self.__clear_answers)
+        # clear_button.pack(fill=BOTH, side=BOTTOM)
 
         self.__draw_grid()
         self.__draw_puzzle()
+        self.parent.mainloop()
 
-        self.canvas.bind("<Button-1>", self.__cell_clicked)
-        self.canvas.bind("<Key>", self.__key_pressed)
+        # self.canvas.bind("<Button-1>", self.__cell_clicked)
+        # self.canvas.bind("<Key>", self.__key_pressed)
 
     def __draw_grid(self):
         """
