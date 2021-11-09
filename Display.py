@@ -21,17 +21,16 @@ class board_UI(Frame):
                              width=WIDTH,
                              height=HEIGHT)
         self.canvas.pack(fill=BOTH, side=TOP)
-        # clear_button = Button(self,
-        #                       text="Clear answers")
-        #                     #   command=self.__clear_answers)
-        # clear_button.pack(fill=BOTH, side=BOTTOM)
+        solve_button = Button(self,
+                              text="Solve!",
+                              command=self.__solve) # TODO: Need to add solve command
+        solve_button.pack(fill=BOTH, side=BOTTOM)
 
         self.__draw_grid()
-        # self.__draw_puzzle()
         self.parent.mainloop()
 
-        # self.canvas.bind("<Button-1>", self.__cell_clicked)
-        # self.canvas.bind("<Key>", self.__key_pressed)
+        self.canvas.bind("<Button-1>", self.__cell_clicked) # TODO: Still need to add logic for this
+        self.canvas.bind("<Key>", self.__key_pressed)
 
     def __draw_grid(self):
         """
