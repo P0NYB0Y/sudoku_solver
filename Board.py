@@ -6,6 +6,7 @@ class board:
             self.table = [[],[],[],[],[],[],[],[],[]]
         else:
             self.table = table_in
+        self.solved = False
 
     # User input/output functions
     def manual_fill_table(self):    # Allows user to fill out table manually
@@ -159,6 +160,8 @@ class board:
                     if num_of_instance == 1: 
                         self.table[input_h][input_v].set_val(num_check)
         return self.fill_squares()
+
+    # TODO: add function for checking that all squares are correct
 
     def naked_matches(self): # In progress https://www.thonky.com/sudoku/naked-pairs-triples-quads
         # TODO: Find issue
