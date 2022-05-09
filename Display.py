@@ -27,6 +27,7 @@ class board_UI(Frame):
         solve_button.pack(fill=BOTH, side=BOTTOM)
 
         self.__draw_grid()
+        self.__draw_puzzle()
         self.parent.mainloop()
 
         self.canvas.bind("<Button-1>", self.__cell_clicked) # TODO: Still need to add logic for this
@@ -55,8 +56,8 @@ class board_UI(Frame):
         self.canvas.delete("numbers")
         for i in range(9):
             for j in range(9):
-                answer = self.board.table[i][j]
-                if answer != 0:
+                answer = self.board.table[i][j].value
+                if answer:
                     x = MARGIN + j * SIDE + SIDE / 2
                     y = MARGIN + i * SIDE + SIDE / 2
                     # original = self.game.start_puzzle[i][j]
