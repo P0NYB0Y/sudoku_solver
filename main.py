@@ -3,9 +3,19 @@ from Square import square
 from Display import board_UI
 from tkinter import Tk, Canvas, Frame, Button, BOTH, TOP, BOTTOM
 
-full_test_board = board()
+# full_test_board = board()
+test_board = ([square(),square(),square(5),square(),square(7),square(8),square(),square(),square()],
+                   [square(),square(7),square(),square(4),square(),square(),square(),square(),square()],
+                   [square(2),square(),square(),square(5),square(6),square(1),square(3),square(7),square(4)],
+                   [square(),square(),square(),square(),square(),square(),square(),square(),square()],
+                   [square(),square(),square(),square(),square(4),square(5),square(2),square(1),square(8)],
+                   [square(),square(),square(),square(),square(3),square(2),square(4),square(9),square()],
+                   [square(),square(),square(),square(9),square(),square(),square(),square(),square(1)],
+                   [square(3),square(),square(1),square(),square(),square(7),square(6),square(),square()],
+                   [square(4),square(),square(9),square(),square(),square(),square(8),square(),square()])
+Board_in = board(test_board)
 root = Tk()
-board_UI(root,full_test_board)
+board_UI(root,Board_in)
 
 
 # for z in range (5):
