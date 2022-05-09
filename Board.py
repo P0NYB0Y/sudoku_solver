@@ -187,4 +187,8 @@ class board:
                         nav_lst.remove(x)
         return self.fill_squares()
 
-    # TODO: add hidden matches function https://www.thonky.com/sudoku/hidden-pairs-triples-quads
+    def solve(self):
+        # TODO: Implement scan funtions into one solve function
+        return
+
+# TODO: add hidden matches function https://www.thonky.com/sudoku/hidden-pairs-triples-quads

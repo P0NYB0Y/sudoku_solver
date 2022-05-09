@@ -23,7 +23,7 @@ class board_UI(Frame):
         self.canvas.pack(fill=BOTH, side=TOP)
         solve_button = Button(self,
                               text="Solve!",
-                              command=self.__solve) # TODO: Need to add solve command
+                              command=self.board.solve()) # TODO: Need to add solve command
         solve_button.pack(fill=BOTH, side=BOTTOM)
 
         self.__draw_grid()
